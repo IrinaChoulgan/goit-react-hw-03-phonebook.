@@ -65,7 +65,14 @@ export default class App extends Component {
         <h2>Contacts</h2>
 
         <Filter contacts={this.state.filter} onChange={this.onChangeFilter} />
-        <ContactList contacts={visibleContacts} onClick={this.deleteContact} />
+        {this.state.contacts.length === 0 ? (
+          <p>Your phone book is empty. Add contacts.</p>
+        ) : (
+          <ContactList
+            contacts={visibleContacts}
+            onClick={this.deleteContact}
+          />
+        )}
       </div>
     );
   }
